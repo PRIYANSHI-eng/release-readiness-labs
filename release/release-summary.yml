@@ -1,5 +1,10 @@
-status: unknown
+status: ready_for_approval
 environment: production
-version: latest
-approval: pending
-rollback: none
+version: v2.3.0
+approval: required
+deployment_strategy: rolling
+infrastructure: kubernetes
+rollback: kubernetes_rollout_undo
+validation:
+  tests: passed
+  release_metadata: passed

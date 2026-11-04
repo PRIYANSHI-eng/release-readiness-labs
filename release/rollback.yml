@@ -1,2 +1,12 @@
-rollback_strategy: 
-target_version: 
+rollback_strategy: kubernetes_rollout_undo
+target_version: v2.3.0
+trigger_conditions:
+  - failed health checks
+  - elevated error rate
+  - failed smoke tests
+procedure:
+  - kubectl rollout undo deployment/lab-app
+  - kubectl rollout status deployment/lab-app
+verification:
+  - check the /health endpoint
+  - confirm the previous image version is running
