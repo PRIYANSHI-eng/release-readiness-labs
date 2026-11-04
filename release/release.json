@@ -1,5 +1,7 @@
 {
-  "Version": "1.0",
-  "ReleaseDate": "2024-01-01",
-  "Author": "DevOps Team"
+  "version": "2.3.0",
+  "releaseDate": "2026-11-04",
+  "author": "DevOps Team",
+  "environment": "production",
+  "infrastructure": "kubernetes"
 }

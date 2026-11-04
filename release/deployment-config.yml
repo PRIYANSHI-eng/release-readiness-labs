@@ -1,7 +1,11 @@
 environment: production
-image_tag: production-build
+version: v2.3.0
+image: lab-app:v2.3.0
+infrastructure: kubernetes
+deployment_strategy: rolling
+
 secrets:
-  API_KEY: ${API_KEY}
-  DATABASE_PASSWORD: password123
-  TOKEN: abcd1234
-  AWS_SECRET: test-secret
+  API_KEY: ${{ secrets.API_KEY }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+  TOKEN: ${{ secrets.TOKEN }}
+  AWS_SECRET: ${{ secrets.AWS_SECRET }}

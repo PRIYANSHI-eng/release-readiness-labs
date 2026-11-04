@@ -1,3 +1,6 @@
-approvedBy: 
-reviewDate: 
-releaseManager: 
+environment: production
+requiredReviewers: 1
+approvalStatus: required
+approvedBy: pending
+reviewDate: pending
+releaseManager: Release Engineering
