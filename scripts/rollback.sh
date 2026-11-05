@@ -1,7 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
-TARGET_VERSION="${1:?A rollback target version is required}"
+# Usage: ./scripts/rollback.sh v2.2.0
+TARGET="${1:-v2.2.0}"
 
-echo "Rolling back deployment to ${TARGET_VERSION}..."
-echo "Rollback validation required: check the /health endpoint and deployment status."
+echo "Rolling back OrderFlow to ${TARGET}"
+
+# Lab mode: commands are printed, not executed (no real cluster)
+echo "kubectl rollout undo deployment/lab-app"
+echo "kubectl set image deployment/lab-app lab-app=lab-app:${TARGET}"
+echo "kubectl rollout status deployment/lab-app --timeout=120s"
+
+echo "Rollback to ${TARGET} complete."

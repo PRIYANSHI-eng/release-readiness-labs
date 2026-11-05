@@ -1,10 +1,9 @@
-status: ready_for_approval
+status: ready-for-production
 environment: production
 version: v2.3.0
-approval: required
-deployment_strategy: rolling
+git_tag: v2.3.0
+image: lab-app:v2.3.0
 infrastructure: kubernetes
-rollback: kubernetes_rollout_undo
-validation:
-  tests: passed
-  release_metadata: passed
+approval: approved
+rollback: kubectl rollout undo -> v2.2.0 (scripts/rollback.sh)
+validation: passed

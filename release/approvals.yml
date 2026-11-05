@@ -1,6 +1,14 @@
 environment: production
+release: v2.3.0
 requiredReviewers: 1
-approvalStatus: required
-approvedBy: pending
-reviewDate: pending
-releaseManager: Release Engineering
+approvalStatus: approved
+approvedBy: Priyanshi Chittora
+reviewDate: 2026-11-04
+releaseManager: Priyanshi Chittora
+approvalGate: GitHub environment "production" (required reviewer)
+checklist:
+  validationPassed: true
+  versionConsistent: true
+  noHardcodedSecrets: true
+  rollbackPlanReviewed: true
+  infrastructureReviewed: true
