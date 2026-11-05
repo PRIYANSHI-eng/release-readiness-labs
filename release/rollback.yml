@@ -1,12 +1,14 @@
-rollback_strategy: kubernetes_rollout_undo
-target_version: v2.3.0
-trigger_conditions:
-  - failed health checks
-  - elevated error rate
-  - failed smoke tests
-procedure:
-  - kubectl rollout undo deployment/lab-app
-  - kubectl rollout status deployment/lab-app
+rollback_strategy: kubernetes-rollout-undo
+current_version: v2.3.0
+target_version: v2.2.0
+script: scripts/rollback.sh
+command: ./scripts/rollback.sh v2.2.0
+max_rollback_time: 5m
+triggers:
+  - /health endpoint failing after deploy
+  - kubectl rollout status does not finish within 120s
+  - error rate or latency above normal after release
 verification:
-  - check the /health endpoint
-  - confirm the previous image version is running
+  - kubectl rollout status deployment/lab-app
+  - /health returns status ok
+owner: Priyanshi Chittora
